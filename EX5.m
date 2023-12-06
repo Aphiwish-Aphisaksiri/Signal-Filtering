@@ -14,12 +14,12 @@ end
 
 %LPF
 f_norm_low = f_cutoff_low / (fs / 2);
-h_low = remez(500, [0 f_norm_low f_norm_low+0.01 1], [1 1 0 0]);
+h_low = remez(1000, [0 f_norm_low f_norm_low+0.01 1], [1 1 0 0]);
 h_low = conv(h_band, h_low );
 
 %HPF
 f_norm_high = f_cutoff_high / (fs/2);
-h_high = remez(600, [0 f_norm_high f_norm_high+0.01 1], [0 0 1 1]);
+h_high = remez(5500, [0 f_norm-0.001 f_norm  1], [0 0 1 1]);
 h = conv(h_low, h_high);
 
 % Compute frequency response

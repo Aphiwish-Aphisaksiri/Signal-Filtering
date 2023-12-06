@@ -6,7 +6,7 @@ f_cutoff = 1; % Cutoff frequency in Hz
 f_norm = f_cutoff / (fs / 2);
 
 % Create the highpass filter using remez
-h = remez(600, [0 f_norm f_norm+0.01 1], [0 0 1 1]);
+h = remez(5500, [0 f_norm-0.001 f_norm 1], [0 0 1 1]);
 
 % Compute frequency response
 [H, w] = freqz(h, 1, 1024);
