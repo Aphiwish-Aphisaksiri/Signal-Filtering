@@ -1,14 +1,8 @@
 % Filter parameters
 fs = 500; % Sampling rate in Hz
 f0 = 50; % Cut-off frequency in Hz
-num_harmonics = 5; % Number of harmonics to consider
 
-% Create notches at the fundamental frequency and its harmonics
-h = 1;
-for harmonic = 1:num_harmonics
-    f = f0 * harmonic;
-    h = conv(h, [1, -2*cos(2*pi*f/fs), 1]);
-end
+h = [1, -2*cos(2*pi*f0/fs), 1]; %Set coefficient
 
 % Load the ECG signal from the .mat file
 load('noisyecg/noisyecg.mat');
@@ -54,6 +48,7 @@ xlabel('Time (s)');
 ylabel('Amplitude');
 title('Original Signal');
 grid on;
+xlim([5, 10]); % Show 5 - 10 seconds
 
 % Plot the filtered signal
 subplot(2, 1, 2);
@@ -62,3 +57,4 @@ xlabel('Time (s)');
 ylabel('Amplitude');
 title('Filtered Signal');
 grid on;
+xlim([5, 10]); % Show 5 - 10 seconds

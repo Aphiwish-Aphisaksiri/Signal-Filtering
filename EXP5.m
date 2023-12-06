@@ -5,12 +5,11 @@ f_cutoff_low = 50;
 f_cutoff_high = 1;
 num_harmonics = 4; % Number of harmonics to consider
 
-%Comb
-h_band = 1;
-for harmonic = 1:num_harmonics
-    f = f_cutoff_notch * harmonic;
-    h_band = conv(h_band, [1, -2*cos(2*pi*f/fs), 1]);
-end
+% Normalize frequencies
+f_norm = f_cutoff / (fs / 2);
+
+%notch
+h_band = [1, -2*cos(2*pi*f0/fs), 1]; %Set coefficient
 
 %LPF
 f_norm_low = f_cutoff_low / (fs / 2);
@@ -66,6 +65,7 @@ xlabel('Time (s)');
 ylabel('Amplitude');
 title('Original Signal');
 grid on;
+xlim([5, 10]); % Show 5 - 10 seconds
 
 % Plot the filtered signal
 subplot(2, 1, 2);
@@ -74,3 +74,4 @@ xlabel('Time (s)');
 ylabel('Amplitude');
 title('Filtered Signal');
 grid on;
+xlim([5, 10]); % Show 5 - 10 seconds

@@ -52,6 +52,7 @@ xlabel('Time (s)');
 ylabel('Amplitude');
 title('Original Signal');
 grid on;
+xlim([5, 10]); % Show 5 - 10 seconds
 
 % Plot the filtered signal
 subplot(2, 1, 2);
@@ -60,3 +61,4 @@ xlabel('Time (s)');
 ylabel('Amplitude');
 title('Filtered Signal');
 grid on;
+xlim([5, 10]); % Show 5 - 10 seconds
